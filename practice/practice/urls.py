@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path("", include('api.api_urls')),
     path("", include('snippets.urls')),
+    path('album/', include('api.api_urls'))
 ]
 
 urlpatterns += [
