@@ -13,11 +13,11 @@ from rest_framework.test import APIRequestFactory
 @api_view()
 def home(request):
     """
-    Home Page
+     Home Page
     """
 
-    # data = {}
-    # data['msg'] = "Hello World"
+    data = {}
+    data['msg'] = "Hello World"
     return Response({'message':"Hello, World"})
 
 # @api_view(['GET'])
@@ -30,14 +30,14 @@ def home(request):
 class AlbumDetailViewSet(viewsets.ModelViewSet):
      queryset = Album.objects.all() 
      serializer_class = AlbumSerializer
-    #  lookup_field = 'album'
-     def retrieve(self, request, pk=None):
-        factory = APIRequestFactory()
-        request = factory.get('/')
+     lookup_field = 'album_name'
+    #  def retrieve(self, request, **kwargs):
+    #     factory = APIRequestFactory()
+    #     request = factory.get('/')
 
 
-        serializer_context = {'request': Request(request)}
-        queryset = Album.objects.all() 
-        tracks = get_object_or_404(queryset, pk=pk)
-        serializer = AlbumSerializer(tracks, context=serializer_context)
-        return Response(serializer.data)
+    #     serializer_context = {'request': Request(request)}
+    #     queryset = Album.objects.all() 
+    #     tracks = get_object_or_404(queryset, kwargs['album_name'])
+    #     serializer = AlbumSerializer(tracks, context=serializer_context)
+    #     return Response(serializer.data)

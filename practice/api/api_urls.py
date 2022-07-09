@@ -10,9 +10,14 @@ track_list = views.AlbumDetailViewSet.as_view({
     'post': 'create'
 })
 
+track_detail = views.AlbumDetailViewSet.as_view({
+    'get': 'retrieve',
+})
+
 urlpatterns = [
     path('home/', views.home),
-    path('track/', track_list, name='track-list')
+    path('track/', track_list, name='track-list'),
+    path('track/<slug>/', track_detail, name='track-detail')
 
 ]
 
