@@ -23,6 +23,7 @@ urlpatterns = [
     path("album/", include("api.api_urls")),
     path("search/", include("search.urls")),
     path("books/", include("books.urls")),
+    path("api/", include("apis.urls")),
 ]
 
 urlpatterns += [
