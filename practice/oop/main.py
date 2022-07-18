@@ -51,10 +51,26 @@ class Item:
         return f"Item('Name: {self.name}', 'Price: {self.price}', 'Quantity: {self.quantity}')"
 
 
-print(Item.is_integer(7.0))
-# Item.instantiate_from_csv()
+class Phone(Item):
+    all = []
 
-# print(Item.all)
+    def __init__(self, name: str, price: float, quantity=0, broken_phones=0):
+        super().__init__(name, price, quantity)
+        # print(f"An instance created: {name}")
+        # assert price >= 0, f"Price {price} is not greater than zero!"
+        # assert quantity >= 0, f"Quantity {quantity} is not greater than zero!"
+        assert broken_phones >= 0, f"Quantity {broken_phones} is not greater than zero!"
 
-# for instance in Item.all:
-#     print(instance.name)
+        # self.name = name
+        # self.price = price
+        # self.quantity = quantity
+        self.broken_phones = broken_phones
+
+        Phone.all.append(self)
+
+
+phone1 = Phone("iPhone12", 1000, 5, 1)
+# phone1.broken_phones = 1
+print(phone1.calculate_total_price())
+phone2 = Phone("Redmi 10I", 800, 5, 1)
+# phone2.broken_phones = 1
