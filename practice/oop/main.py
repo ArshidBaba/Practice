@@ -35,13 +35,26 @@ class Item:
                 quantity=int(item.get("quantity")),
             )
 
+    @staticmethod
+    def is_integer(num):
+        # We will count out the floats that are point zero
+        # fro i.e: 5.0, 10.0 and so on.
+        if isinstance(num, float):
+            # Count out the floats that are point zero
+            return num.is_integer()
+        elif isinstance(num, int):
+            return True
+        else:
+            return False
+
     def __repr__(self):
         return f"Item('Name: {self.name}', 'Price: {self.price}', 'Quantity: {self.quantity}')"
 
 
-Item.instantiate_from_csv()
+print(Item.is_integer(7.0))
+# Item.instantiate_from_csv()
 
-print(Item.all)
+# print(Item.all)
 
 # for instance in Item.all:
 #     print(instance.name)
