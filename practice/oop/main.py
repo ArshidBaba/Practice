@@ -1,73 +1,11 @@
-import csv
+from re import I
+from item import Item
 
+# from phone import Phone
 
-class Item:
-    pay_rate = 0.8
-    all = []
+item1 = Item("MyItem", 750)
+item1.name = "OtherItem"
 
-    def __init__(self, name: str, price: float, quantity=0):
-        print(f"An instance created: {name}")
-        assert price >= 0, f"Price {price} is not greater than zero!"
-        assert quantity >= 0, f"Quantity {quantity} is not greater than zero!"
+print(item1.read_only_name)
 
-        self.name = name
-        self.price = price
-        self.quantity = quantity
-
-        Item.all.append(self)
-
-    def calculate_total_price(self):
-        return self.price * self.quantity
-
-    def apply_discount(self):
-        self.price = self.price * self.pay_rate
-
-    @classmethod
-    def instantiate_from_csv(cls):
-        with open("items.csv", "r") as f:
-            reader = csv.DictReader(f)
-            items = list(reader)
-
-        for item in items:
-            Item(
-                name=item.get("name"),
-                price=float(item.get("price")),
-                quantity=int(item.get("quantity")),
-            )
-
-    @staticmethod
-    def is_integer(num):
-        # We will count out the floats that are point zero
-        # fro i.e: 5.0, 10.0 and so on.
-        if isinstance(num, float):
-            # Count out the floats that are point zero
-            return num.is_integer()
-        elif isinstance(num, int):
-            return True
-        else:
-            return False
-
-    def __repr__(self):
-        return f"{self.__class__.__name__}('Name: {self.name}', 'Price: {self.price}', 'Quantity: {self.quantity}')"
-
-
-class Phone(Item):
-    # all = []
-
-    def __init__(self, name: str, price: float, quantity=0, broken_phones=0):
-        super().__init__(name, price, quantity)
-        assert broken_phones >= 0, f"Quantity {broken_phones} is not greater than zero!"
-
-        self.broken_phones = broken_phones
-
-        # Phone.all.append(self)
-
-
-phone1 = Phone("iPhone12", 1000, 5, 1)
-# phone1.broken_phones = 1
-# print(phone1.calculate_total_price())
-# phone2 = Phone("Redmi 10I", 800, 5, 1)
-# phone2.broken_phones = 1
-
-print(Item.all)
-print(Phone.all)
+item1.read_only_name = "BBB"
