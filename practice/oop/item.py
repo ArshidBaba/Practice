@@ -69,6 +69,20 @@ class Item:
     def __repr__(self):
         return f"{self.__class__.__name__}('Name: {self.name}', 'Price: {self.__price}', 'Quantity: {self.quantity}')"
 
-    # @property
-    # def read_only_name(self):
-    #     return "AAA"
+    def __connect(self, smtp_server):
+        pass
+
+    def __prepare_body(self):
+        return f"""
+        Hello Someone.
+        We have {self.name} {self.quantity} times.
+        Regards, JimShapedCoding
+        """
+
+    def __send(self):
+        print("Email Sent")
+
+    def send_email(self):
+        self.__connect("")
+        self.__prepare_body()
+        self.__send()
