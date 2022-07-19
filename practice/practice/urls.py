@@ -24,6 +24,7 @@ urlpatterns = [
     path("search/", include("search.urls")),
     path("books/", include("books.urls")),
     path("api/", include("apis.urls")),
+    path("todos/", include("todos.urls")),
 ]
 
 urlpatterns += [
