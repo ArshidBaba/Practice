@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "search",
     "books.apps.BooksConfig",  # new
     "apis.apps.ApisConfig",  # new
+    "todos.apps.TodosConfig",
 ]
 
 MIDDLEWARE = [
