@@ -10,11 +10,20 @@ class Item:
         assert price >= 0, f"Price {price} is not greater than zero!"
         assert quantity >= 0, f"Quantity {quantity} is not greater than zero!"
 
-        self.name = name
+        self.__name = name
         self.price = price
         self.quantity = quantity
 
         Item.all.append(self)
+
+    @property
+    # Property Decorator = Read-Only Attribute
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
 
     def calculate_total_price(self):
         return self.price * self.quantity
@@ -49,3 +58,7 @@ class Item:
 
     def __repr__(self):
         return f"{self.__class__.__name__}('Name: {self.name}', 'Price: {self.price}', 'Quantity: {self.quantity}')"
+
+    # @property
+    # def read_only_name(self):
+    #     return "AAA"
